@@ -20,9 +20,11 @@
           
         <div class="col s12 m8 l9">
                   <!-- Teal page content  -->
-<p> 
 
-O curso de Deep Learning da fast.ai recomenda que novatos comecem utilizando alguma das soluções de nuvem que recomendam e ajudam a configurar em seu site.
+
+<h1 class="head-title">Installing Machine Learning frameworks: Pytorch with Fastai & Tensorflow with Keras</h1>
+<h3 class="head-title">Pytorch & FastAi</h3>
+<p> O curso de Deep Learning da fast.ai recomenda que novatos comecem utilizando alguma das soluções de nuvem que recomendam e ajudam a configurar em seu site.
 
 No entanto, sempre poderá haver necessidades específicas que requeiram instalação em ambiente próprio. Aqui, sintetizamos um passo-a-passo para configurar um ambiente de desenvolvimento completo para o curso da fast.ai no sistema operacional Ubuntu 18.04.2 LTS.
 
@@ -32,8 +34,10 @@ Assim, a opção mais simples utiliza sistemas já configurados com todas as par
 </p>
 
 <p>
-A versão mais simples e gratuita utiliza o Kaggle: <a href="https://course.fast.ai/start_kaggle.html">FastAi Kaggle</a>
-
+A versão mais simples e gratuita utiliza o Kaggle:
+</p>
+ <pre><spam><a href="https://course.fast.ai/start_kaggle.html">FastAi Kaggle</a></spam></pre>
+<p>
 Recomenda-se criar uma conta no Kaggle, como solução mínima que já garante poder executar os cadernos dos cursos da fast.ai, ainda que com várias limitações.
 
 Uma solução mais disponível e confiável requer criar uma conta na Google Cloud (GCP), que requer fornecer dados de cartão de crédito, porém sem cobrança, podendo utilizar um crédito inicial de U$ 300! Instruções detalhadas para configuração do GCP no site da fas.ai: <a href="httpshttps://course.fast.ai/start_gcp.html">FastAi GCP Configurations</a>
@@ -44,27 +48,27 @@ Finalmente, também é possível configurar seu próprio sistema, seja em comput
 
 Segue um passo-a-passo de instalação e configuração, da base da pirâmide até a sua ponta.
 </p>
-<h3>
-1. Instalar os drivers da nVidia para Ubuntu
+<h3 class="head-title">
+1. Instalar os drivers da NVidia para Ubuntu
 </h3>
 <p>
 Opção 1: Pelo PPA, para fácil manutenção/upgrade utilizando o sistema APT do Ubuntu
 </p>
-<h5>
+<h4 class="head-title">
 1.1 adicionar o repositório ppa com os drivers oficiais da nVidia para Ubuntu:
-</h5>
+</h4>
 
 <p>
   Em um terminal, executar:
 </p>
-<spam class="code-block">
+<div class="code-block">
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
-</spam>
-<h5>
-1.2 consultar última versão disponível dos drivers em: <a href="https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa">https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa</a>
-</h5>
-
+</div>
+<h4 class="head-title">
+1.2 consultar última versão disponível dos drivers em: 
+</h4>
+<pre><spam><a href="https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa">https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa</a></spam></pre>
 <p>
    [em 4/3/2019 a versão mais recente é ‘nvidia-driver-415’] 
 </p>
@@ -72,26 +76,27 @@ sudo apt update
 <p>
   Em caso de dúvida o seguinte comando permite listar os drivers disponíveis nesse ppa:
 </p>
-<spam class="code-block">
+<div class="code-block">
   awk '$1 == "Package:" { if (a[$2]++ == 0) print $2; }' /var/lib/apt/lists/*graphics-drivers*<stong>ppa</stong>*Packages
-</spam>
+</div>
 
-<h5>
+<h4 class="head-title">
 1.3 instalar a última versão do driver [aqui nvidia-driver-415]
-</h5>
+</h4>
 
-<spam class="code-block">>
+<div  class="code-block">
 sudo apt install nvidia-driver-415
-</spam>
+</div>
 
-<spam>
+<p>
 Opção 2: Baixando os drivers adequados do site da nVidia:
-</spam>
-<spam class="code-block">
-<a href="https://www.nvidia.com/Download/index.aspx?lang=en-us 1"> Download NVIDIA driver</a>
-
+</p>
+<pre><spam>
+<a href="https://www.nvidia.com/Download/index.aspx?lang=en-us 1">Download NVIDIA driver</a> <br>
+</spam></pre>
+<div  class="code-block">
 Arquivo tipo: NVIDIA-Linux-x86_64–418.43.run
-</spam>
+</div>
 <p>
 Tornar o arquivo executável e executar o arquivo .run acima.
 
@@ -99,9 +104,9 @@ Qualquer que seja a opção utilizada acima, lembre-se de reiniciar o computador
 
 Após reiniciar, verificar que a instalação dos drivers foi bem sucedida, executando no terminal:
 </p>
-<spam class="code-block">
+<div class="code-block">
     nvidia-smi
-</spam>
+</div>
 
 <p>
   Esse comando deve retornar diversos dados de configuração de sua placa de vídeo:
@@ -113,120 +118,125 @@ Após reiniciar, verificar que a instalação dos drivers foi bem sucedida, exec
   <li>uso de memória na GPU</li>
   <li>diversas outras informações: nível de uso, potência elétrica, processos utilizando a memória, etc.</li>
 </ul>
-<h3>
+<h3 class="head-title">
 2. Instalar Anaconda para Ubuntu
 </h3>
 
-<h5>
+<h4 class="head-title">
 2.1 Baixe a última versão do instalador Anaconda, com python 3.7 para Linux em:
-<a href ="https://www.anaconda.com/download/">Download Anaconda</a>
-</h5>
 
+</h4>
+<pre><spam><a href ="https://www.anaconda.com/download/">Download Anaconda</a></spam></pre>
 <p>
   [em 4/3/2019, a última versão é Anaconda3–2018.12-Linux-x86_64.sh]
 </p>
 <p>
   [opcional, mas boa prática] Verifique o hash criptográfico do instalador baixado com SHA-256, em um terminal:
 </p>
-<spam class="code-block">
+<div class="code-block">
 >> sha256sum Anaconda3-2018.12-Linux-x86_64.sh
 
 >> Anaconda3–2018.12-Linux-x86_64.sh
-</spam>
+</div>
 <p>
   A comparar com o hash publicado em <a href="https://docs.anaconda.com/anaconda/install/hashes/lin-3-64/">Anaconda Repository</a>
 [Aqui especificamente para a minha versão: <a href="https://docs.anaconda.com/anaconda/install/hashes/Anaconda3-2018.12-Linux-x86_64.sh-hash/">Anaconda3</a>]
 </p>
 
-<h5>
+<h4 class="head-title">
   2.2 Executar o script de instalação, no terminal:
-</h5>
+</h4>
 
-<spam class="code-block">
+<div  class="code-block">
   bash Anaconda3-2018.12-Linux-x86_64.sh
-</spam>
+</div>
 Será preciso aceitar a licença, local de instalação e alteração no arquivo .bashsrc.
 
-<h5>
+<h4 class="head-title">
   2.3 Verificar que o Anaconda foi bem instalado
-</h5>
+</h4>
 Em novo terminal, executar:
 
-<spam class="code-block">
+<div  class="code-block">
 conda list
-</spam>
+</div>
 
-<h5>
+<h4 class="head-title">
   2.4 Atualizar o gerenciador de pacotes conda
-</h5>
+</h4>
 
-<spam class="code-block">
+<div  class="code-block">
   conda update conda
-</spam>
-<h3>
+</div>
+<h3 class="head-title">
 3. Instalando Git
 </h3>
 
-<h5>
+<h4 class="head-title">
 3.1 Executar a instalação no terminal no Ubuntu:
-</h5>
+</h4>
 
-<spam class="code-block">
+<div class="code-block">
 sudo apt install git-all
-</spam>
-<h5>
+</div>
+<h4 class="head-title">
 3.2 Testar a instalação:
-</h5>
-<spam class="code-block">
+</h4>
+<div class="code-block">
 git --version
-</spam>
-<h3>
+</div>
+<h3 class="head-title">
 4. Criando e ativando um ambiente virtual conda para uso da fast.ai:
 </h3>
 Para evitar problemas de versão com outros programas é desejável utilizar um ambiente virtual conda:
-<spam class="code-block">
+<div class="code-block">
 conda create --name fastai python=3
 source activate fastai
-</spam>
-<h3>
+</div>
+<h3 class="head-title">
 5. Instalando pyTorch e fastai
 </h3>
 Finalmente, o passo mais importante! No ambiente virtual criado e ativado no passo anterior, executar: [obs: o pacote pytorch já instala os requisitos CUDA]
-<spam class="code-block">
+<div class="code-block">
 conda install -c pytorch -c fastai fastai
-</spam>
+</div>
+<p>
 O comando acima deverá instalar as últimas versões de pyTorch (>= 1.0) com o CUDA mais avançado para a sua placa de vídeo, assim como a versão mais recente da fastai (>= v1). Outros cursos da fast.ai podem requerer diferentes versões da biblioteca, daí a importância de utilizar o ambiente virtual do conda.
 
 ATENÇÃO: Algumas instruções de instalação da fastai recomendam instalar um decodificador JPEG otimizado para as operações de transformação de imagens. Recomendo não fazê-lo em um primeiro momento, pois isso gerou problemas de compatibilidade posteriormente entre as versões esperadas de PIL e pillow
-<spam class="code-block">
+<div  class="code-block">
 c̶o̶n̶d̶a̶ ̶u̶n̶i̶n̶s̶t̶a̶l̶l̶ ̶-̶-̶f̶o̶r̶c̶e̶ ̶j̶p̶e̶g̶ ̶l̶i̶b̶t̶i̶f̶f̶ ̶-̶y̶
 ̶c̶o̶n̶d̶a̶ ̶i̶n̶s̶t̶a̶l̶l̶ ̶-̶c̶ ̶c̶o̶n̶d̶a̶-̶f̶o̶r̶g̶e̶ ̶l̶i̶b̶j̶p̶e̶g̶-̶t̶u̶r̶b̶o̶
 ̶C̶C̶=̶"̶c̶c̶ ̶-̶m̶a̶v̶x̶2̶"̶ ̶p̶i̶p̶ ̶i̶n̶s̶t̶a̶l̶l̶ ̶-̶-̶n̶o̶-̶c̶a̶c̶h̶e̶-̶d̶i̶r̶ ̶-̶U̶ ̶-̶-̶f̶o̶r̶c̶e̶-̶r̶e̶i̶n̶s̶t̶a̶l̶l̶ ̶-̶-̶n̶o̶-̶b̶i̶n̶a̶r̶y̶ ̶:̶a̶l̶l̶:̶ ̶-̶-̶c̶o̶m̶p̶i̶l̶e̶ ̶p̶i̶l̶l̶o̶w̶-̶s̶i̶m̶d̶
-</spam>
-<h3>
+</div>
+</p>
+<h3 class="head-title">
 6. Copiar a biblioteca fastai para seu ambiente de desenvolvimento
 </h3>
+<p>
 No github, o projeto “course-v3" contém os cadernos jupyter do curso Practical Deep Learning for Coders, part 1 (DL1) mais recentes, adequados para uso com a versão da bilbioteca fastai v1.
 
 Com o terminal na sua pasta de desenvolvimento, execute:
 
 git clone <a href="https://github.com/fastai/course-v3">https://github.com/fastai/course-v3</a>
-<h3>
+</p>
+<h3 class="head-title">
 7. Instalando Jupyter
 </h3>
 No ambiente virtual fastai criado e ativado no passo 4, executar:
-<spam class="code-block">
+<div  class="code-block">
 conda install jupyter notebook
 conda install -c conda-forge jupyter_contrib_nbextensions
-</spam>
+</div>
 Finalmente, lançar Jupyter para testar a fastai:
-<spam class="code-block">
+<div  class="code-block">
 (fastai)> jupyter notebook
-</spam>
+</div>
 Na interface do jupyter, navegar até a pasta onde foi clonada a biblioteca fastai, navegar nas pastas:
-<spam class="code-block"></spam>
+<div class="code-block">
 course-v3/nbs/dl1/00_notebook_tutorial.ipynb
-</spam>
+</div>
+<p>
 Realizar uma cópia do caderno “00_notebook_tutorial.ipynb” para “00_notebook_tutorial-copy.ipynb” de forma a poder editar livremente sua própria versão, sem causar problemas com atualizações posteriores da fastai pelo git.
 
 Executar as células do caderno “00_notebook_tutorial-copy.ipynb”
@@ -241,24 +251,37 @@ Caso não resolva, utilize uma versão já instalada, em nuvem, como Google Clou
 
 Espero que esse passo-a-passo tenha sido útil. Se for o caso, aplauda o artigo para que eu priorize novas postagens desse tipo.
 deeplearningbrasilia.
+</p>
 
+<h3 class="head-title"> Tensorflow & Keras</h3>
+<p>
 Follow this useful link to install Tensorflow and Keras by following the same process that we use to create the fastai environment.
 <a href="https://www.youtube.com/watch?v=CcKf-iZ8umk&t=101s">Install Tensorflow and Keras</a>
+</p>
 </div>
-  
-<script>
-  var codeFrame = document.querySelectorAll('spam.code-block');
+  <!--JavaScript at end of body for optimized loading -->
+<script type="text/javascript" src="materialize.min.js"></script>
+<script>            
+  var codeFrame = document.querySelectorAll('.code-block');
   for (let i=0; i<codeFrame.length;i++){
     let codeBlock = codeFrame[i];
     codeBlock.style.height = '50px';
-    codeBlock.style.width = '300px';
+    codeBlock.style.width = '900px';
     codeBlock.style.backgroundColor  = '#D3D3D3';
     codeBlock.style.overflow='auto';
-    codeBlock.display='block';
+    codeBlock.setAttribute('class','z-depth-2');
   }
-  
+  var paragraphContent = document.querySelectorAll('p');
+  for(let i=0; i<paragraphContent.length;i++){
+    let parcont =paragraphContent[i];
+    parcont.style.width = '900px';
+  }
+  var headTitles = document.querySelectorAll('.head-title');
+  for(let i=0; i<headTitles.length;i++){
+    let headcont =headTitles[i];
+    headcont.style.width = '900px';
+  }
 </script>
-<!--JavaScript at end of body for optimized loading -->
-<script type="text/javascript" src="materialize.min.js"></script>
+
 </body>
 </html>
