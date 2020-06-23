@@ -4,7 +4,7 @@
      <!--Import Google Icon Font-->
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <!--Import materialize.css-->
-     <link type="text/css" rel="stylesheet" href="materialize.min.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
      <!--Let browser know website is optimized for mobile-->
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,8 +12,14 @@
     <title>Machine Learning frameworks</title>
   </head>
 <body>
+    <div class="row">
 
-<div class="main-content">
+        <div class="col s12 m4 l3">
+                  <!-- Grey navigation panel -->
+        </div>
+          
+        <div class="col s12 m8 l9">
+                  <!-- Teal page content  -->
 <p> 
 
 O curso de Deep Learning da fast.ai recomenda que novatos comecem utilizando alguma das soluções de nuvem que recomendam e ajudam a configurar em seu site.
@@ -94,8 +100,9 @@ Qualquer que seja a opção utilizada acima, lembre-se de reiniciar o computador
 Após reiniciar, verificar que a instalação dos drivers foi bem sucedida, executando no terminal:
 </p>
 <spam class="code-block">
-nvidia-smi
+    nvidia-smi
 </spam>
+
 <p>
   Esse comando deve retornar diversos dados de configuração de sua placa de vídeo:
 </p>
@@ -240,18 +247,18 @@ Follow this useful link to install Tensorflow and Keras by following the same pr
 </div>
   
 <script>
-  var mainContent = document.querySelector('div.main-content');
-  mainContent.style.margin ='600px';
   var codeFrame = document.querySelectorAll('spam.code-block');
   for (let i=0; i<codeFrame.length;i++){
     let codeBlock = codeFrame[i];
     codeBlock.style.height = '50px';
-    codeBlock.style.width = '900px';
+    codeBlock.style.width = '300px';
     codeBlock.style.backgroundColor  = '#D3D3D3';
+    codeBlock.style.overflow='auto';
+    codeBlock.display='block';
   }
   
 </script>
 <!--JavaScript at end of body for optimized loading -->
-<script type="text/javascript" src="materialize.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>
